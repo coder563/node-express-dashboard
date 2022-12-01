@@ -7,7 +7,7 @@
 const app = require("../app");
 const debug = require("debug")("log-dashboard:server");
 const http = require("http");
-const Websocket = require("ws")
+const WebSocket = require("ws")
 /**
  * Get port from environment and store in Express.
  */
@@ -20,7 +20,7 @@ app.set("port", port);
  */
 
 const server = http.createServer(app);
-const wss = WebSocket.Server(server)
+const wss = new WebSocket.Server({server})
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,7 +28,11 @@ const wss = WebSocket.Server(server)
 server.listen(port);
 server.on("error", onError);
 
-wss.on("connection",wsconnectioncallback(ws));
+wss.on("connection",(ws)=>{
+	ws.on("message", (message) =>{
+    ws.send("Here is want you sent: "+message)
+  })
+})
 
 function wsconnectioncallback(ws) {
 	
