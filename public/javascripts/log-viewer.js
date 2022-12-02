@@ -5,11 +5,10 @@ connection.onopen = (event) =>{
     
     connection.send("Hello from the client!");
 } 
-connection.onmessage = recieveAmessage(event)
-
-function recieveAmessage(event){
+connection.onmessage = (event)=>{
 
     logWindow.innerHTML = event.data
+
 
 }
 
