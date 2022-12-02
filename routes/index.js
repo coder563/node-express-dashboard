@@ -6,13 +6,13 @@ const { validationResult } = require("express-validator");
 const { body } = require("express-validator");
 
 /* GET home page. */
-router.get("/", (req, res, next) => {
-  res.render("index", { title: "Log Dashboard" });
+router.get( "/",  (req, res, next) => {
+  res.render("index", { title: "Log Dashboard" , logFile:req.query.logFile });
 });
 
 /* GET select file. */
 router.get("/select-file", (req, res, next) => {
-  res.render("select-file", { title: "Select Log File" });
+  res.render("select-file",  { title: "Select Log File" });
 });
 
 /* GET settings. */
