@@ -34,18 +34,7 @@ wss.on("connection",(ws)=>{
   })
 })
 
-function wsconnectioncallback(ws) {
-	
-	ws.on("message",wsmessagecallback(message))
-	
-}
 
-function wsmessagecallback(message){
-	
-	ws.send("Hello from the server! You sent: " +message)
-	
-	
-}
 
 server.on("listening", onListening);
 
